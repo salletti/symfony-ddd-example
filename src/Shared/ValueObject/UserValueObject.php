@@ -6,5 +6,4 @@ namespace App\Shared\ValueObject;
 
 abstract class UserValueObject extends AggregateRootId
 {
-
 }

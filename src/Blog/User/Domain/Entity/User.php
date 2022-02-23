@@ -4,10 +4,13 @@ declare(strict_types=1);
 
 namespace App\Blog\User\Domain\Entity;
 
+use App\Blog\User\Domain\Event\UserCreatedEvent;
+use App\Shared\Aggregate\AggregateRoot;
+use Ramsey\Uuid\Uuid;
 use Symfony\Component\Security\Core\User\PasswordAuthenticatedUserInterface;
 use Symfony\Component\Security\Core\User\UserInterface;
 
-class User implements UserInterface, PasswordAuthenticatedUserInterface
+class User extends AggregateRoot implements UserInterface, PasswordAuthenticatedUserInterface
 {
     private string $id;
 
@@ -84,5 +87,18 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface
     {
         // If you store any temporary, sensitive data on the user, clear it here
         // $this->plainPassword = null;
+    }
+
+    public static function registerUser(Email $email, array $roles, string $password): self
+    {
+        $userId = Uuid::uuid4()->toString();
+        $user = new User($userId);
+        $user->setEmail($email->getValue());
+        $user->setRoles($roles);
+        $user->setPassword($password);
+
+        $user->recordDomainEvent(new UserCreatedEvent($userId, $email));
+
+        return $user;
     }
 }

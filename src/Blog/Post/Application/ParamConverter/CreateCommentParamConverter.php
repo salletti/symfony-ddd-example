@@ -11,7 +11,7 @@ use Symfony\Component\HttpFoundation\Request;
 
 final class CreateCommentParamConverter implements ParamConverterInterface
 {
-    public function apply(Request $request, ParamConverter $configuration)
+    public function apply(Request $request, ParamConverter $configuration): bool
     {
         $parameters = json_decode($request->getContent(), true, 512, JSON_THROW_ON_ERROR);
 
@@ -21,6 +21,8 @@ final class CreateCommentParamConverter implements ParamConverterInterface
         $createCommentCommand->setMessage($parameters['message']);
 
         $request->attributes->set($configuration->getName(), $createCommentCommand);
+
+        return true;
     }
 
     public function supports(ParamConverter $configuration): bool

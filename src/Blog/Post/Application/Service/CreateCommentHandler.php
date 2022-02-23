@@ -28,7 +28,6 @@ final class CreateCommentHandler implements MessageHandlerInterface
         EventDispatcherInterface $eventDispatcher,
         SerializerInterface $serializer
     ) {
-
         $this->articleRepository = $articleRepository;
         $this->commentRepository = $commentRepository;
         $this->eventDispatcher = $eventDispatcher;

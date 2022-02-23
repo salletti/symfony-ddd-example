@@ -13,7 +13,7 @@ use Symfony\Component\Messenger\MessageBusInterface;
 use Symfony\Component\Routing\Annotation\Route;
 
 /**
- * @Route("/api/comments/", name="api_comment_post", methods={"POST"}, options={"expose"=true})
+ * @Route("/api/comments/", name="api_comment_post", methods={"POST"})
  *
  * @ParamConverter(name="createCommentCommand", converter="CreateComment")
  */

@@ -5,6 +5,7 @@ declare(strict_types=1);
 namespace App\Blog\Post\Domain\Event;
 
 use App\Blog\Post\Domain\Entity\ArticleId;
+use App\Shared\Event\DomainEventInterface;
 use Symfony\Contracts\EventDispatcher\Event;
 
 final class ArticleCreatedEvent extends Event implements DomainEventInterface
@@ -17,10 +18,12 @@ final class ArticleCreatedEvent extends Event implements DomainEventInterface
         $this->articleId = $articleId;
         $this->occur = new \DateTimeImmutable();
     }
+
     public function getArticleId(): ArticleId
     {
         return $this->articleId;
     }
+
     public function getOccur(): \DateTimeImmutable
     {
         return $this->occur;

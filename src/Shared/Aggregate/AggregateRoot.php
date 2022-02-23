@@ -4,7 +4,7 @@ declare(strict_types=1);
 
 namespace App\Shared\Aggregate;
 
-use App\Blog\Post\Domain\Event\DomainEventInterface;
+use App\Shared\Event\DomainEventInterface;
 
 abstract class AggregateRoot
 {
@@ -24,5 +24,4 @@ abstract class AggregateRoot
 
         return $domainEvents;
     }
-
 }

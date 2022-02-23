@@ -2,8 +2,8 @@
 
 namespace App\Blog\Post\Infrastructure\Repository;
 
-use App\Blog\Post\Domain\Repository\ArticleRepositoryInterface;
 use App\Blog\Post\Domain\Entity\Article;
+use App\Blog\Post\Domain\Repository\ArticleRepositoryInterface;
 use Doctrine\Bundle\DoctrineBundle\Repository\ServiceEntityRepository;
 use Doctrine\Persistence\ManagerRegistry;
 

@@ -8,17 +8,4 @@ use App\Shared\ValueObject\EmailValueObject;
 
 final class Email extends EmailValueObject
 {
-    private string $value;
-
-    public function __construct(string $value)
-    {
-        $this->ensureIsValidEmail($value);
-
-        $this->value = $value;
-    }
-
-    public function getValue(): string
-    {
-        return $this->value;
-    }
 }

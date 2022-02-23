@@ -12,6 +12,8 @@ final class CreateArticleCommand
 
     private string $author;
 
+    private string $category;
+
     public function getTitle(): string
     {
         return $this->title;
@@ -40,5 +42,15 @@ final class CreateArticleCommand
     public function setAuthor(string $author): void
     {
         $this->author = $author;
+    }
+
+    public function getCategory(): string
+    {
+        return $this->category;
+    }
+
+    public function setCategory(string $category): void
+    {
+        $this->category = $category;
     }
 }

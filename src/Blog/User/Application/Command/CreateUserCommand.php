@@ -2,11 +2,9 @@
 
 declare(strict_types=1);
 
-namespace App\Blog\User\Application;
+namespace App\Blog\User\Application\Command;
 
-use App\Blog\User\Domain\Entity\User;
-use App\Blog\User\Domain\Repository\UserRepositoryInterface;
-use Ramsey\Uuid\Uuid;
+use App\Blog\User\Application\Service\CreateUserService;
 use Symfony\Component\Console\Attribute\AsCommand;
 use Symfony\Component\Console\Command\Command;
 use Symfony\Component\Console\Input\InputArgument;
@@ -21,11 +19,11 @@ use Symfony\Component\Console\Output\OutputInterface;
 )]
 final class CreateUserCommand extends Command
 {
-    private UserRepositoryInterface $userRepository;
+    private CreateUserService $createUserService;
 
-    public function __construct(UserRepositoryInterface $userRepository)
+    public function __construct(CreateUserService $createUserService)
     {
-        $this->userRepository = $userRepository;
+        $this->createUserService = $createUserService;
 
         parent::__construct();
     }
@@ -42,23 +40,26 @@ final class CreateUserCommand extends Command
 
     protected function execute(InputInterface $input, OutputInterface $output): int
     {
-        // outputs multiple lines to the console (adding "\n" at the end of each line)
         $output->writeln([
             'User Creator',
             '============',
             '',
         ]);
 
-        // outputs a message without adding a "\n" at the end of the line
-        $output->write('You are about to ');
-        $output->write('create a user.');
+        $output->writeln('You are about to create user');
 
-        $user = new User(Uuid::uuid4()->toString());
-        $user->setEmail($input->getArgument('email'));
-        $user->setRoles([$input->getArgument('role')]);
-        $user->setPassword($input->getArgument('password'));
+        $user = $this->createUserService->handle(
+            $input->getArgument('email'),
+            [$input->getArgument('role')],
+            $input->getArgument('password')
+        );
 
-        $this->userRepository->save($user);
+        $output->writeln([
+            'User Created : ',
+            '',
+        ]);
+
+        $output->write($user);
 
         return Command::SUCCESS;
     }

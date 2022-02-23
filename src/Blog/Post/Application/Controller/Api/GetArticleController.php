@@ -5,7 +5,6 @@ declare(strict_types=1);
 namespace App\Blog\Post\Application\Controller\Api;
 
 use App\Blog\Post\Application\Model\FindArticleQuery;
-use App\Blog\Post\Application\Service\ArticleFinderService;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\JsonResponse;
 use Symfony\Component\Messenger\HandleTrait;
@@ -13,9 +12,9 @@ use Symfony\Component\Messenger\MessageBusInterface;
 use Symfony\Component\Routing\Annotation\Route;
 
 /**
- * @Route("/api/articles/{id}", name="api_article", methods={"GET"}, options={"expose"=true})
+ * @Route("/api/articles/{id}", name="api_article", methods={"GET"})
  */
-final class GetArticlesController extends AbstractController
+final class GetArticleController extends AbstractController
 {
     use HandleTrait;
 

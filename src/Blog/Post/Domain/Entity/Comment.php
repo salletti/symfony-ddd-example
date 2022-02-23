@@ -4,9 +4,6 @@ declare(strict_types=1);
 
 namespace App\Blog\Post\Domain\Entity;
 
-use App\Blog\Post\Domain\Entity\CommentId;
-use App\Blog\Post\Domain\Entity\Email;
-
 class Comment
 {
     private string $id;

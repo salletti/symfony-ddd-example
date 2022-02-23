@@ -5,6 +5,7 @@ namespace App\Blog\Post\Domain\Entity;
 use App\Blog\Post\Domain\Event\ArticleCreatedEvent;
 use App\Blog\Post\Domain\Event\CommentCreatedEvent;
 use App\Shared\Aggregate\AggregateRoot;
+use App\Shared\ValueObject\CategoryId;
 
 class Article extends AggregateRoot
 {
@@ -19,6 +20,20 @@ class Article extends AggregateRoot
     private string $title;
 
     private string $author;
+
+    private string $category;
+
+    public function getCategory(): CategoryId
+    {
+        return new CategoryId($this->category);
+    }
+
+    public function setCategory(CategoryId $category): self
+    {
+        $this->category = $category->getValue();
+
+        return $this;
+    }
 
     public function __construct(ArticleId $id)
     {
@@ -78,13 +93,6 @@ class Article extends AggregateRoot
         return $this;
     }
 
-    public function addComment(Comment $comment): self
-    {
-        $this->comments[] = $comment;
-
-        return $this;
-    }
-
     public function getAuthor(): AuthorId
     {
         return new AuthorId($this->author);
@@ -97,14 +105,20 @@ class Article extends AggregateRoot
         return $this;
     }
 
-    public static function create(ArticleId $articleId, string $title, string $body, AuthorId $author): self
-    {
+    public static function create(
+        ArticleId $articleId,
+        string $title,
+        string $body,
+        AuthorId $authorId,
+        CategoryId $categoryId
+    ): self {
         $article = new self($articleId);
         $article->setTitle($title);
         $article->setBody($body);
         $article->setCreatedAt(new \DateTimeImmutable('now'));
         $article->setUpdatedAt(new \DateTimeImmutable('now'));
-        $article->setAuthor($author);
+        $article->setAuthor($authorId);
+        $article->setCategory($categoryId);
 
         $article->recordDomainEvent(new ArticleCreatedEvent($articleId));
 

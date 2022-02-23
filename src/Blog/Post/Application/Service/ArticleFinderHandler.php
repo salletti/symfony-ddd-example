@@ -9,7 +9,6 @@ use App\Blog\Post\Domain\Repository\ArticleRepositoryInterface;
 use App\Blog\Post\Domain\Repository\CommentRepositoryInterface;
 use Symfony\Component\Messenger\Handler\MessageHandlerInterface;
 use Symfony\Component\Serializer\Normalizer\ObjectNormalizer;
-use Symfony\Component\Serializer\SerializerInterface;
 
 final class ArticleFinderHandler implements MessageHandlerInterface
 {
@@ -20,11 +19,9 @@ final class ArticleFinderHandler implements MessageHandlerInterface
     public function __construct(
         ArticleRepositoryInterface $articleRepository,
         CommentRepositoryInterface $commentRepository,
-        SerializerInterface $serializer,
         ObjectNormalizer $objectNormalizer,
     ) {
         $this->articleRepository = $articleRepository;
-        $this->serializer = $serializer;
         $this->commentRepository = $commentRepository;
         $this->objectNormalizer = $objectNormalizer;
     }
@@ -40,7 +37,6 @@ final class ArticleFinderHandler implements MessageHandlerInterface
         foreach ($comments as $comment) {
             $commentsNormalized[] = $this->objectNormalizer->normalize($comment);
         }
-
 
         $results = \array_merge(
             $this->objectNormalizer->normalize($article),

@@ -36,6 +36,7 @@ final class CreateCommentCommand
     {
         return $this->message;
     }
+
     public function setMessage(string $message): void
     {
         $this->message = $message;

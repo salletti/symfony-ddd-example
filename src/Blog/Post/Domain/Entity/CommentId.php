@@ -8,5 +8,4 @@ use App\Shared\ValueObject\AggregateRootId;
 
 final class CommentId extends AggregateRootId
 {
-
 }
