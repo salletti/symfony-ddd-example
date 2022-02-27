@@ -8,7 +8,7 @@ use App\Blog\Category\Domain\Event\CategoryCreatedEvent;
 use App\Shared\Aggregate\AggregateRoot;
 use App\Shared\ValueObject\CategoryId;
 
-final class Category extends AggregateRoot
+class Category extends AggregateRoot
 {
     private string $id;
 
