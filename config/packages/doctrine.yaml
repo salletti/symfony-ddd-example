@@ -10,12 +10,12 @@ doctrine:
         naming_strategy: doctrine.orm.naming_strategy.underscore_number_aware
         auto_mapping: true
         mappings:
-            Post:
+            Article:
                 type: xml
                 is_bundle: false
-                dir: '%kernel.project_dir%/src/Blog/Post/Infrastructure/DoctrineMapping'
-                prefix: 'App\Blog\Post\Domain\Entity'
-                alias: Blog
+                dir: '%kernel.project_dir%/src/Blog/Post/Article/Infrastructure/DoctrineMapping'
+                prefix: 'App\Blog\Post\Article\Domain\Entity'
+                alias: Article
             User:
                 type: xml
                 is_bundle: false
@@ -25,6 +25,6 @@ doctrine:
             Category:
                 type: xml
                 is_bundle: false
-                dir: '%kernel.project_dir%/src/Blog/Category/Infrastructure/DoctrineMapping'
-                prefix: 'App\Blog\Category\Domain\Entity'
+                dir: '%kernel.project_dir%/src/Blog/Post/Category/Infrastructure/DoctrineMapping'
+                prefix: 'App\Blog\Post\Category\Domain\Entity'
                 alias: Category

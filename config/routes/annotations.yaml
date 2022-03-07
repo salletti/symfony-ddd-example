@@ -1,8 +1,8 @@
-controllersPost:
-        resource: ../../src/Blog/Post/Application/Controller/
+controllersArticle:
+        resource: ../../src/Blog/Post/Article/Application/Controller/
         type: annotation
 ControllerCategory: 
-        resource: ../../src/Blog/Category/Application/Controller/
+        resource: ../../src/Blog/Post/Category/Application/Controller/
         type: annotation
     
 kernel:

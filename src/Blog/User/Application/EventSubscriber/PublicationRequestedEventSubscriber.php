@@ -4,9 +4,9 @@ declare(strict_types=1);
 
 namespace App\Blog\User\Application\EventSubscriber;
 
-use App\Blog\Post\Application\Event\OnPublicationRequestedEvent;
+use App\Blog\Post\Article\Application\Event\OnPublicationRequestedEvent;
 use App\Blog\User\Domain\Entity\User;
-use App\Blog\User\Application\Event\UserVerifiedEvent;
+use App\Blog\User\Application\Event\OnUserVerifiedEvent;
 use App\Blog\User\Domain\Repository\UserRepositoryInterface;
 use Symfony\Component\EventDispatcher\EventDispatcherInterface;
 use Symfony\Component\EventDispatcher\EventSubscriberInterface;
@@ -43,7 +43,7 @@ final class PublicationRequestedEventSubscriber implements EventSubscriberInterf
             throw new \InvalidArgumentException('the author does not have the necessary permissions');
         }
 
-        $this->eventDispatcher->dispatch(new UserVerifiedEvent(
+        $this->eventDispatcher->dispatch(new OnUserVerifiedEvent(
             $event->getTitle(),
             $event->getBody(),
             $event->getAuthor(),

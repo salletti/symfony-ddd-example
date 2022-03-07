@@ -23,6 +23,6 @@ services:
     # add more service definitions when explicit configuration is needed
     # please note that last definitions always *replace* previous ones
 
-    App\Blog\Post\Application\ParamConverter\CreateCommentParamConverter:
+    App\Blog\Post\Article\Application\ParamConverter\CreateCommentParamConverter:
         tags:
             - { name: request.param_converter, converter: CreateComment }
