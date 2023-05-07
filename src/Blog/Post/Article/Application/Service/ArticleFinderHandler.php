@@ -7,10 +7,11 @@ namespace App\Blog\Post\Article\Application\Service;
 use App\Blog\Post\Article\Application\Model\FindArticleQuery;
 use App\Blog\Post\Article\Domain\Repository\ArticleRepositoryInterface;
 use App\Blog\Post\Article\Domain\Repository\CommentRepositoryInterface;
-use Symfony\Component\Messenger\Handler\MessageHandlerInterface;
+use Symfony\Component\Messenger\Attribute\AsMessageHandler;
 use Symfony\Component\Serializer\SerializerInterface;
 
-final class ArticleFinderHandler implements MessageHandlerInterface
+#[AsMessageHandler]
+final class ArticleFinderHandler
 {
     private ArticleRepositoryInterface $articleRepository;
     private CommentRepositoryInterface $commentRepository;

@@ -4,8 +4,8 @@ declare(strict_types=1);
 
 namespace App\Blog\Post\Category\Domain\Event;
 
-use App\Shared\Event\DomainEventInterface;
 use App\Blog\Post\Shared\Domain\Entity\ValueObject\CategoryId;
+use App\Shared\Event\DomainEventInterface;
 use Symfony\Contracts\EventDispatcher\Event;
 
 final class CategoryCreatedEvent extends Event implements DomainEventInterface

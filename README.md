@@ -169,37 +169,36 @@ Now the creation of the article can be done.
 ### How to use
 
 1) <pre>$ docker-compose exec php sh</pre>
-2) Create user: <pre>$ bin/concole app:create-user s.alletti@gmail.com p4$$word ROLE_EDITOR</pre>
-3) Create category: <pre>POST https://localhost/api/categories/ </pre>
+2) Create user: <pre>$ bin/console app:create-user s.alletti@gmail.com p4$$word ROLE_EDITOR</pre>
+3) Create category:
+    <pre>POST https://localhost/api/categories/</pre>
     <pre>
     {
-        "name": "Sport", 
+        "name": "Sport",
         "slug": "sport"
     }
-</pre>
+   </pre>
 4) Create Article: 
-<pre>POST https://localhost/api/articles/</pre>
+    <pre>POST https://localhost/api/articles/</pre>
     <pre>
     {
         "title": "article",
         "body": "body",
-        "author": *author_id*, 
+        "author": *author_id*,
         "categorySlug": "sport"
-    }</pre>
+    }
+   </pre>
 5) Create Comment:
-
    <pre>POST https://localhost/api/comments/</pre>
-   <pre>
+    <pre>
     {
-        "article_id": *author_id*, 
-        "email": "s.alletti@gmail.com", 
+        "article_id": *article_id*,
+        "email": "s.alletti@gmail.com",
         "message": "test message"
     }
-</pre>
+    </pre>
 6) Get Article:
-<pre>
-    GET https://localhost/api/articles/*author_id*
-</pre>
+    <pre>GET https://localhost/api/articles/*article_id*</pre>
 
 ## About Me
 * [Blog](https://stefanoalletti.wordpress.com/)

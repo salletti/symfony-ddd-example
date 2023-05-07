@@ -55,11 +55,11 @@ final class CreateUserCommand extends Command
         );
 
         $output->writeln([
-            'User Created : ',
+            'User Created:',
             '',
         ]);
 
-        $output->write($user);
+        $output->writeln($user);
 
         return Command::SUCCESS;
     }

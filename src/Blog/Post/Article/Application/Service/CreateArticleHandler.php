@@ -13,10 +13,11 @@ use App\Blog\Post\Shared\Domain\Entity\ValueObject\CategoryId;
 use Ramsey\Uuid\Uuid;
 use Symfony\Component\EventDispatcher\EventDispatcherInterface;
 use Symfony\Component\HttpFoundation\RequestStack;
-use Symfony\Component\Messenger\Handler\MessageHandlerInterface;
+use Symfony\Component\Messenger\Attribute\AsMessageHandler;
 use Symfony\Component\Serializer\SerializerInterface;
 
-final class CreateArticleHandler implements MessageHandlerInterface
+#[AsMessageHandler]
+final class CreateArticleHandler
 {
     private ArticleRepositoryInterface $articleRepository;
     private EventDispatcherInterface $eventDispatcher;

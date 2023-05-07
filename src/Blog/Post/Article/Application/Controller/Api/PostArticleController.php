@@ -11,9 +11,7 @@ use Symfony\Component\HttpFoundation\JsonResponse;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\Routing\Annotation\Route;
 
-/**
- * @Route("/api/articles/", name="api_article_post", methods={"POST"})
- */
+#[Route('/api/articles/', name: 'api_article_post', methods: ['POST'])]
 final class PostArticleController extends AbstractController
 {
     private EventDispatcherInterface $eventDispatcher;
