@@ -10,10 +10,11 @@ use App\Blog\Post\Category\Domain\Repository\CategoryRepositoryInterface;
 use App\Blog\Post\Shared\Domain\Entity\ValueObject\CategoryId;
 use Ramsey\Uuid\Uuid;
 use Symfony\Component\EventDispatcher\EventDispatcherInterface;
-use Symfony\Component\Messenger\Handler\MessageHandlerInterface;
+use Symfony\Component\Messenger\Attribute\AsMessageHandler;
 use Symfony\Component\Serializer\SerializerInterface;
 
-final class CreateCategoryService implements MessageHandlerInterface
+#[AsMessageHandler]
+final class CreateCategoryService
 {
     private EventDispatcherInterface $eventDispatcher;
 

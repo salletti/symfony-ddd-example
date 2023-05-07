@@ -5,8 +5,8 @@ declare(strict_types=1);
 namespace App\Blog\User\Application\EventSubscriber;
 
 use App\Blog\Post\Article\Application\Event\OnPublicationRequestedEvent;
-use App\Blog\User\Domain\Entity\User;
 use App\Blog\User\Application\Event\OnUserVerifiedEvent;
+use App\Blog\User\Domain\Entity\User;
 use App\Blog\User\Domain\Repository\UserRepositoryInterface;
 use Symfony\Component\EventDispatcher\EventDispatcherInterface;
 use Symfony\Component\EventDispatcher\EventSubscriberInterface;

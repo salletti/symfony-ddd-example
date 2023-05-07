@@ -11,9 +11,7 @@ use Symfony\Component\Messenger\HandleTrait;
 use Symfony\Component\Messenger\MessageBusInterface;
 use Symfony\Component\Routing\Annotation\Route;
 
-/**
- * @Route("/api/articles/{id}", name="api_article", methods={"GET"})
- */
+#[Route('/api/articles/{id}', name: 'api_article', methods: ['GET'])]
 final class GetArticleController extends AbstractController
 {
     use HandleTrait;

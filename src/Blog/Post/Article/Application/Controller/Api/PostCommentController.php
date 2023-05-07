@@ -12,11 +12,8 @@ use Symfony\Component\Messenger\HandleTrait;
 use Symfony\Component\Messenger\MessageBusInterface;
 use Symfony\Component\Routing\Annotation\Route;
 
-/**
- * @Route("/api/comments/", name="api_comment_post", methods={"POST"})
- *
- * @ParamConverter(name="createCommentCommand", converter="CreateComment")
- */
+#[Route('/api/comments/', name: 'api_comment_post', methods: ['POST'])]
+#[ParamConverter('createCommentCommand', converter: 'CreateComment')]
 final class PostCommentController extends AbstractController
 {
     use HandleTrait;

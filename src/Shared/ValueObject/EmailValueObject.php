@@ -6,7 +6,7 @@ namespace App\Shared\ValueObject;
 
 abstract class EmailValueObject
 {
-    protected $value;
+    protected string $value;
 
     public function __construct(string $value)
     {

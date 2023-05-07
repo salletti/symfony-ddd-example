@@ -12,10 +12,11 @@ use App\Blog\Post\Article\Domain\Repository\ArticleRepositoryInterface;
 use App\Blog\Post\Article\Domain\Repository\CommentRepositoryInterface;
 use Psr\EventDispatcher\EventDispatcherInterface;
 use Ramsey\Uuid\Uuid;
-use Symfony\Component\Messenger\Handler\MessageHandlerInterface;
+use Symfony\Component\Messenger\Attribute\AsMessageHandler;
 use Symfony\Component\Serializer\SerializerInterface;
 
-final class CreateCommentHandler implements MessageHandlerInterface
+#[AsMessageHandler]
+final class CreateCommentHandler
 {
     private ArticleRepositoryInterface $articleRepository;
     private CommentRepositoryInterface $commentRepository;

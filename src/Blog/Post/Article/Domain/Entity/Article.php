@@ -2,15 +2,10 @@
 
 namespace App\Blog\Post\Article\Domain\Entity;
 
-use App\Blog\Post\Article\Domain\Entity\ArticleId;
-use App\Blog\Post\Article\Domain\Entity\AuthorId;
-use App\Blog\Post\Article\Domain\Entity\Comment;
-use App\Blog\Post\Article\Domain\Entity\CommentId;
-use App\Blog\Post\Article\Domain\Entity\Email;
 use App\Blog\Post\Article\Domain\Event\ArticleCreatedEvent;
 use App\Blog\Post\Article\Domain\Event\CommentCreatedEvent;
-use App\Shared\Aggregate\AggregateRoot;
 use App\Blog\Post\Shared\Domain\Entity\ValueObject\CategoryId;
+use App\Shared\Aggregate\AggregateRoot;
 
 class Article extends AggregateRoot
 {

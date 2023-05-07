@@ -29,9 +29,9 @@ final class CreateUserService
     public function handle(string $email, array $roles, string $password): string
     {
         $user = User::registerUser(
-          new Email($email),
-          $roles,
-          $password
+            new Email($email),
+            $roles,
+            $password
         );
 
         $this->userRepository->save($user);

@@ -5,8 +5,8 @@ declare(strict_types=1);
 namespace App\Blog\Post\Category\Domain\Entity;
 
 use App\Blog\Post\Category\Domain\Event\CategoryCreatedEvent;
-use App\Shared\Aggregate\AggregateRoot;
 use App\Blog\Post\Shared\Domain\Entity\ValueObject\CategoryId;
+use App\Shared\Aggregate\AggregateRoot;
 
 class Category extends AggregateRoot
 {
@@ -41,9 +41,9 @@ class Category extends AggregateRoot
     public static function create(CategoryId $id, string $name, string $slug): self
     {
         $category = new Category(
-          $id,
-          $name,
-          $slug
+            $id,
+            $name,
+            $slug
         );
 
         $category->recordDomainEvent(new CategoryCreatedEvent($id));
